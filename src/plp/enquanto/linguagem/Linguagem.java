@@ -227,6 +227,17 @@ public interface Linguagem {
 			return esq.getValor() / dir.getValor();
 		}
 	}
+	
+	class ExpPot extends ExpBin {
+		public ExpPot(Expressao esq, Expressao dir) {
+			super(esq, dir);
+		}	
+
+		@Override
+		public int getValor() {
+			return (int)Math.pow(esq.getValor(), dir.getValor());
+		}
+	}
 
 	class Booleano implements Bool {
 		private boolean valor;

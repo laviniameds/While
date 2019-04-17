@@ -9,7 +9,7 @@ Linguagem "Enquanto" usada como exemplo na disciplina de Paradigmas de Linguagen
 
 ### Altere a linguagem para incluir:
 1. A expressão de divisão de inteiros (`/`) **OK**
-2. A expressão de exponenciação de inteiros (`^`)
+2. A expressão de exponenciação de inteiros (`^`) **OK**
 3. A expressão `ou` entre booleanos
 4. A expressão `xor` entre booleanos
 5. A relação maior ou igual (`>=`)
