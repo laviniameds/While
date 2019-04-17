@@ -1,1 +1,1 @@
-se 6<=5 entao exiba "true" senao exiba "false"
+se 6<>6 entao exiba "true" senao exiba "false"

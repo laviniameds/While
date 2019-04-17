@@ -23,7 +23,7 @@ expressao: INT                                      # inteiro
          ;
 
 bool: ('verdadeiro'|'falso')                        # booleano
-    | expressao '=' expressao                       # opRel
+    | expressao ('='|'<>') expressao                # opRel
     | expressao ('<='|'>=') expressao               # opRel
     | 'nao' bool                                    # naoLogico
     | bool 'e' bool                                 # eLogico

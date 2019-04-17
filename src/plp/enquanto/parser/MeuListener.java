@@ -172,6 +172,9 @@ public class MeuListener extends EnquantoBaseListener {
 		case "=":
 			exp = new ExpIgual(esq, dir);
 			break;
+		case "<>":
+			exp = new ExpDif(esq, dir);
+			break;
 		case "<=":
 			exp = new ExpMenorIgual(esq, dir);
 			break;

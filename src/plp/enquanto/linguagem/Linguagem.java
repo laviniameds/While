@@ -261,7 +261,7 @@ public interface Linguagem {
 			this.dir = dir;
 		}
 	}
-
+	
 	public class ExpIgual extends ExpRel {
 
 		public ExpIgual(Expressao esq, Expressao dir) {
@@ -271,6 +271,19 @@ public interface Linguagem {
 		@Override
 		public boolean getValor() {
 			return esq.getValor() == dir.getValor();
+		}
+
+	}
+	
+	public class ExpDif extends ExpRel {
+
+		public ExpDif(Expressao esq, Expressao dir) {
+			super(esq, dir);
+		}
+
+		@Override
+		public boolean getValor() {
+			return esq.getValor() != dir.getValor();
 		}
 
 	}
