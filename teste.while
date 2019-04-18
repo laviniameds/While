@@ -1,1 +1,4 @@
-se 6<>6 entao exiba "true" senao exiba "false"
+se (falso xor verdadeiro) entao
+  exiba "true"
+senao
+  exiba "false";
