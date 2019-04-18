@@ -1,6 +1,7 @@
 package plp.enquanto.linguagem;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -47,19 +48,31 @@ public interface Linguagem {
 		private Bool condicao;
 		private Comando entao;
 		private Comando senao;
+		private Map<Bool, Comando> senaoses;
 
-		public Se(Bool condicao, Comando entao, Comando senao) {
+		public Se(Bool condicao, Comando entao, Map<Bool, Comando> senaoses, Comando senao) {
 			this.condicao = condicao;
 			this.entao = entao;
 			this.senao = senao;
+			this.senaoses = senaoses;
 		}
 
 		@Override
 		public void execute() {
-			if (condicao.getValor())
+			if (condicao.getValor()) {
 				entao.execute();
-			else
+			} else {
+				Iterator<Bool> condicoes = senaoses.keySet().iterator();
+				while (condicoes.hasNext()) {
+					Bool senaose_condicao = condicoes.next();
+					if (senaose_condicao.getValor()) {
+						senaoses.get(senaose_condicao).execute();
+						return;
+					}
+				}
+				
 				senao.execute();
+			}
 		}
 	}
 
@@ -95,6 +108,55 @@ public interface Linguagem {
 		@Override
 		public void execute() {
 			while (condicao.getValor()) {
+				faca.execute();
+			}
+		}
+	}
+	
+	class Escolha implements Comando {
+		private Id entrada;
+        private Map<Expressao, Comando> comandos;
+        private Comando saidaPadrao;
+
+		public Escolha(Id entrada, Map<Expressao, Comando> comandos, Comando saidaPadrao) {
+			this.entrada = entrada;
+			this.comandos = comandos;
+			this.saidaPadrao = saidaPadrao;
+		}
+		
+		@Override
+		public void execute() {
+			int valor = entrada.getValor();
+			for (Expressao exp : comandos.keySet()) {
+                if (exp.getValor() == valor) {
+                    comandos.get(exp).execute();
+                    return;
+                }
+			}
+			saidaPadrao.execute();
+		}
+		
+	}
+	
+	class Para implements Comando {
+		private Id id;
+		private Expressao esq;
+		private Expressao dir;
+		private Comando faca;
+		private Inteiro passo;
+		
+		public Para(Id id, Expressao esq, Expressao dir, Comando faca, Inteiro passo) {
+			this.id = id;
+			this.esq = esq;
+			this.dir = dir;
+			this.faca = faca;
+			this.passo = passo;
+		}
+
+		@Override
+		public void execute() {
+			for (int i = esq.getValor(); i <= dir.getValor(); i+=(int) passo.getValor()) {
+				ambiente.put(id.id, i);
 				faca.execute();
 			}
 		}

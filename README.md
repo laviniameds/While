@@ -14,12 +14,13 @@ Linguagem "Enquanto" usada como exemplo na disciplina de Paradigmas de Linguagen
 4. A expressão `xor` entre booleanos **OK**
 5. A relação maior ou igual (`>=`) **OK**
 6. A relação diferente (`<>`) **OK**
-5. O comando `para ID de expressao ate expressao [passo Int] faca comando`. Exemplo
+5. O comando `para ID de expressao ate expressao [passo Int] faca comando`. **OK** Exemplo: 
 <pre>
     para i de 1 ate 5 passo 2 faca
       escreva i
 </pre>
-8. A alteração do comando `se .. entao .. senao ...` para incluir a cláusula (opcional) `senaose`. Cada `se` pode ter zero ou mais clausulas `senaose`. Exemplo:
+8. A alteração do comando `se .. entao .. senao ...` para incluir a cláusula (opcional) `senaose`. Cada `se` pode 
+ter zero ou mais clausulas `senaose`. **OK** Exemplo:
 <pre>
     se nota >= 6 entao
       exiba "Aprovado"
@@ -29,7 +30,7 @@ Linguagem "Enquanto" usada como exemplo na disciplina de Paradigmas de Linguagen
       exiba "Reprovado"
 </pre>
 
-9. O comando `escolha` (switch).
+9. O comando `escolha` (switch). **OK**
 <pre>
     x = leia
     escolha x

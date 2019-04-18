@@ -1,7 +1,9 @@
 package plp.enquanto.parser;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
@@ -39,10 +41,16 @@ public class MeuListener extends EnquantoBaseListener {
 
 	@Override
 	public void exitSe(final EnquantoParser.SeContext ctx) {
-		final Bool condicao = (Bool) getValue(ctx.bool());
+		final Bool condicao = (Bool) getValue(ctx.bool(0));
+		final Map<Bool, Comando> senaoses = new HashMap<Bool, Comando>();
+		
+		for (int i = 1; i < ctx.bool().size(); i++) {
+			senaoses.put((Bool) getValue(ctx.bool(i)),(Comando) getValue(ctx.comando(i)));
+		}
+		
 		final Comando entao = (Comando) getValue(ctx.comando(0));
-		final Comando senao = (Comando) getValue(ctx.comando(1));
-		setValue(ctx, new Se(condicao, entao, senao));
+		final Comando senao = (Comando) getValue(ctx.comando(ctx.comando().size()-1));
+		setValue(ctx, new Se(condicao, entao, senaoses, senao));
 	}
 
 	@Override
@@ -61,6 +69,32 @@ public class MeuListener extends EnquantoBaseListener {
 		setValue(ctx, new Escreva(exp));
 	}
 
+	@Override
+	public void exitPara(final EnquantoParser.ParaContext ctx) {
+		final Id id = new Id(ctx.ID().getText());
+		final Expressao esq = (Expressao) getValue(ctx.expressao(0));
+		final Expressao dir = (Expressao) getValue(ctx.expressao(1));
+		final Comando comando = (Comando) getValue(ctx.comando());
+		final Inteiro passo = ctx.INT() != null ? 
+				new Inteiro(Integer.parseInt(ctx.INT().getText())) :
+				new Inteiro(1);
+		setValue(ctx, new Para(id, esq, dir, comando, passo));
+	}
+	
+	@Override
+	public void exitEscolha(final EnquantoParser.EscolhaContext ctx) {
+		final Id id = new Id(ctx.ID().getText());
+		final Map<Expressao, Comando> escolhas = new HashMap<Expressao, Comando>();
+		for (int i = 0; i < ctx.expressao().size(); i++) {
+			escolhas.put(
+					(Expressao) getValue(ctx.expressao(i)),
+					(Comando) getValue(ctx.comando(i))
+					);
+		}
+		final Comando outro = (Comando) getValue(ctx.comando(ctx.comando().size()-1));
+		setValue(ctx, new Escolha(id, escolhas, outro));
+	}
+	
 	@Override
 	public void exitPrograma(final EnquantoParser.ProgramaContext ctx) {
 		@SuppressWarnings("unchecked")
