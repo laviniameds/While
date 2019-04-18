@@ -152,6 +152,9 @@ public interface EnquantoListener extends ParseTreeListener {
 	 * labeled alternative in {@link EnquantoParser#expressao}.
 	 * @param ctx the parse tree
 	 */
+	void enterChamadaFuncao(EnquantoParser.ChamadaFuncaoContext ctx);
+	void exitChamadaFuncao(EnquantoParser.ChamadaFuncaoContext ctx);
+		
 	void enterLeia(EnquantoParser.LeiaContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code leia}

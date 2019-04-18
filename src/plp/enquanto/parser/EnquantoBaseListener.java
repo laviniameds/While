@@ -5,6 +5,8 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import plp.enquanto.parser.EnquantoParser.ChamadaFuncaoContext;
+
 /**
  * This class provides an empty implementation of {@link EnquantoListener},
  * which can be extended to create a listener which only needs to handle a subset
@@ -324,4 +326,14 @@ public class EnquantoBaseListener implements EnquantoListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void visitErrorNode(ErrorNode node) { }
+	@Override
+	public void enterChamadaFuncao(ChamadaFuncaoContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void exitChamadaFuncao(ChamadaFuncaoContext ctx) {
+		// TODO Auto-generated method stub
+		
+	}
 }

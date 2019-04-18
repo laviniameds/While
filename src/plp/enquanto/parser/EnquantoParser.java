@@ -303,6 +303,26 @@ public class EnquantoParser extends Parser {
 			if ( listener instanceof EnquantoListener ) ((EnquantoListener)listener).exitDefFuncao(this);
 		}
 	}
+	
+	public static class ChamadaFuncaoContext extends ExpressaoContext {
+		public TerminalNode ID() { return getToken(EnquantoParser.ID, 0); }
+		public List<ExpressaoContext> expressao() {
+			return getRuleContexts(ExpressaoContext.class);
+		}
+		public ExpressaoContext expressao(int i) {
+			return getRuleContext(ExpressaoContext.class,i);
+		}
+		public ChamadaFuncaoContext(ExpressaoContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof EnquantoListener ) ((EnquantoListener)listener).enterChamadaFuncao(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof EnquantoListener ) ((EnquantoListener)listener).exitChamadaFuncao(this);
+		}
+	}
+	
 	public static class EnquantoContext extends ComandoContext {
 		public BoolContext bool() {
 			return getRuleContext(BoolContext.class,0);
