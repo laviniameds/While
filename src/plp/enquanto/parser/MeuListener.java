@@ -86,10 +86,7 @@ public class MeuListener extends EnquantoBaseListener {
 		final Id id = new Id(ctx.ID().getText());
 		final Map<Expressao, Comando> escolhas = new HashMap<Expressao, Comando>();
 		for (int i = 0; i < ctx.expressao().size(); i++) {
-			escolhas.put(
-					(Expressao) getValue(ctx.expressao(i)),
-					(Comando) getValue(ctx.comando(i))
-					);
+			escolhas.put((Expressao) getValue(ctx.expressao(i)),(Comando) getValue(ctx.comando(i)));
 		}
 		final Comando outro = (Comando) getValue(ctx.comando(ctx.comando().size()-1));
 		setValue(ctx, new Escolha(id, escolhas, outro));
