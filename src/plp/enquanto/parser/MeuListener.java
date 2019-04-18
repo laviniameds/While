@@ -250,7 +250,7 @@ public class MeuListener extends EnquantoBaseListener {
 			exp = new ExpMenorIgual(esq, dir);
 			break;
 		case ">=":
-			exp = new ExpMenorIgual(esq, dir);
+			exp = new ExpMaiorIgual(esq, dir);
 			break;
 		default:
 			exp = new ExpIgual(esq, dir);
