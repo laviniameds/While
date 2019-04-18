@@ -75,9 +75,7 @@ public class MeuListener extends EnquantoBaseListener {
 		final Expressao esq = (Expressao) getValue(ctx.expressao(0));
 		final Expressao dir = (Expressao) getValue(ctx.expressao(1));
 		final Comando comando = (Comando) getValue(ctx.comando());
-		final Inteiro passo = ctx.INT() != null ? 
-				new Inteiro(Integer.parseInt(ctx.INT().getText())) :
-				new Inteiro(1);
+		final Inteiro passo = ctx.INT() != null ? new Inteiro(Integer.parseInt(ctx.INT().getText())) : new Inteiro(1);
 		setValue(ctx, new Para(id, esq, dir, comando, passo));
 	}
 	
@@ -101,6 +99,7 @@ public class MeuListener extends EnquantoBaseListener {
 		}
 		final Expressao expressao = (Expressao) getValue(ctx.expressao());
 		
+		setValue(ctx, new DefFuncao(nome, parametros, expressao));
 	}
 	
 	@Override

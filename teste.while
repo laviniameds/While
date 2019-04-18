@@ -1,33 +1,3 @@
-escreva 10/5;
-exiba "";
-
-escreva 2^3;
-exiba "";
-
-se 6 <> 6 entao 
-	exiba "falso" 
-senao  
-	exiba "verdadeiro"
-;
-exiba "";
-
-se 6 >= 6 entao 
-	exiba "verdadeiro" 
-senao  
-	exiba "falso"
-;
-exiba "";
-
-se falso xor falso entao 
-	exiba "verdadeiro"
-senao
-	exiba "falso"
-;
-exiba "";
-
-se falso ou falso entao 
-	exiba "verdadeiro"
-senao
-	exiba "falso"
-
-
+soma(a,b) = a + b ;
+  
+escreva soma(2,3)

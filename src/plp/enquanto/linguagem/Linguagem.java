@@ -181,7 +181,7 @@ public interface Linguagem {
 				}
 				return expressao.getValor();
 			} else {
-				throw new Exception("Quantidade de parametros errada");
+				throw new Exception("Quantidade de parâmetros errada");
 			}
 		}
 		
@@ -205,7 +205,6 @@ public interface Linguagem {
 			try {
 				return defs.get(nome.id).chamada(valores);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				return -1;
 			}
