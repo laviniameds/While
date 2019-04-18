@@ -23,6 +23,7 @@ expressao: INT                                      # inteiro
          | expressao ('*'|'/') expressao            # opBin
          | expressao ('+'|'-') expressao            # opBin
          | '(' expressao ')'                        # expPar
+         | ID '(' (expressao (',' expressao)*)? ')'	# chamadaFuncao
          ;
 
 bool: ('verdadeiro'|'falso')                        # booleano

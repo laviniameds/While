@@ -1,7 +1,3 @@
-nota := leia;
-se nota >= 6 entao
-  exiba "Aprovado"
-senaose nota >= 2 entao
-  exiba "Recuperacao"
-senao
-  exiba "Reprovado"
+soma(a,b) = a + b ;
+  
+escreva soma(2,3)

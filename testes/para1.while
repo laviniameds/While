@@ -1,4 +1,3 @@
 n := 10;
-para i de 1 ate n faca {
-  escreva i;
-}
+para i de 1 ate n passo 1 faca 
+  escreva i
