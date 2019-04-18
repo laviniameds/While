@@ -39,7 +39,7 @@ ter zero ou mais clausulas `senaose`. **OK** Exemplo:
       outro  : exiba "outro numero"
  </pre>
 
-10. A definição e aplicação de funções
+10. A definição e aplicação de funções **OK**
 <pre>
   soma(a,b) = a + b ;
   
